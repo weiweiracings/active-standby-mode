@@ -42,8 +42,13 @@ public class App
                 System.out.println(leaderLatch.getId() +  ":I am active.");
             }else{
                 //备机可以执行备机任务，并且备机知道主机是谁
+                String id = "none";
+                try{
+                    id = leaderLatch.getLeader().getId();
+                }catch (Exception e){
+                }
                 System.out.println(leaderLatch.getId() +  ":I am standby. I know leader:"
-                        + leaderLatch.getLeader().getId());
+                        + id);
             }
 
             Thread.sleep(100);
